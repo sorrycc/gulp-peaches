@@ -4,13 +4,13 @@ Peaches plugin for gulp.
 
 ## Install
 
-```
+```bash
 $ npm install gulp-peaches
 ```
 
 ## Usage
 
-```
+```javascript
 var peaches = require('gulp-peaches');
 
 gulp.task('peaches', function() {
