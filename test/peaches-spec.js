@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var es = require('event-stream');
 var fs = require('fs');
 var path = require('path');
-var gulpPeaches = require('../lib/peaches');
+var gulpPeaches = require('../');
 
 describe('peaches', function() {
 
