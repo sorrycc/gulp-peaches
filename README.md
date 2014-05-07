@@ -22,5 +22,6 @@ gulp.task('peaches', function() {
 
 ## LISENCE
 
-MIT
+(MIT License)
 
+Copyright (c) 2014 ChenCheng sorrycc@gmail.com
