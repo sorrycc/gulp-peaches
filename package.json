@@ -1,0 +1,33 @@
+{
+  "name": "gulp-peaches",
+  "version": "0.1.0",
+  "description": "Peaches plugin for gulp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec --require should -t 50000 ./test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sorrycc/gulp-peaches"
+  },
+  "keywords": [
+    "peaches",
+    "gulp"
+  ],
+  "author": "chencheng <sorrycc@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sorrycc/gulp-peaches/issues"
+  },
+  "homepage": "https://github.com/sorrycc/gulp-peaches",
+  "dependencies": {
+    "peaches": "^0.5.18",
+    "gulp": "^3.6.2",
+    "event-stream": "^3.1.5",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "should": "^3.3.1",
+    "mocha": "^1.18.2"
+  }
+}
