@@ -22,7 +22,7 @@ module.exports = function gulpPeaches(opt) {
 
   return es.map(function(file, cb) {
     if (file.isNull()) return cb(null, file);
-    if (file.isStream()) throw new PluginError(PLUGIN_NAME, 'gulp-peaches: Streaming not supported')
+    if (file.isStream()) throw new PluginError(PLUGIN_NAME, 'gulp-peaches: Streaming not supported');
 
     var content = String(file.contents);
     peaches(content, opt, function(err, newContent) {
