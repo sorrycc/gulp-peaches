@@ -1,6 +1,6 @@
 {
   "name": "gulp-peaches",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Peaches plugin for gulp.",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,8 @@
     "url": "https://github.com/sorrycc/gulp-peaches"
   },
   "keywords": [
-    "peaches",
-    "gulp"
+    "gulpplugin",
+    "peaches"
   ],
   "author": "chencheng <sorrycc@gmail.com>",
   "license": "MIT",
