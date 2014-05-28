@@ -1,33 +1,51 @@
 'use strict';
 
 var peaches = require('peaches');
-var es = require('event-stream');
-var _ = require('lodash');
+var path = require('path');
+var rimraf = require('rimraf');
+var through = require('through2');
+var debug = require('debug')('gulp-peaches');
 var PluginError = require('gulp-util').PluginError;
+var _ = require('lodash');
 
 // Consts
 var PLUGIN_NAME = 'gulp-peaches';
 
-module.exports = function gulpPeaches(opt) {
+module.exports = function gulpPeaches(options) {
 
   var defaultOpt = {
     server: {
-      "name": "tfs",
-      "root": "./tmp",
-      "tmp": "./tmp"
+      'name': 'tfs',
+      'root': './tmp',
+      'tmp': './tmp'
     }
   };
 
-  opt = _.extend(defaultOpt, opt);
+  options = _.extend(defaultOpt, options);
 
-  return es.map(function(file, cb) {
-    if (file.isNull()) return cb(null, file);
-    if (file.isStream()) throw new PluginError(PLUGIN_NAME, 'gulp-peaches: Streaming not supported')
+  return through.obj(function transform(file, enc, callback) {
+    if (file.isNull()) return callback(null, file);
+    if (file.isStream()) return callback(new PluginError(PLUGIN_NAME, 'Streaming not supported.'));
 
-    var content = String(file.contents);
-    peaches(content, opt, function(err, newContent) {
-      file.contents = new Buffer(newContent);
-      cb(null, file);
+    var that = this;
+    var code = file.contents.toString();
+    peaches(code, options, function(err, styleText) {
+      if (err) {
+        debug('file %s error %s', file.path, err);
+        return callback(new PluginError(err));
+      }
+
+      debug('file %s success', file.path);
+      file.contents = new Buffer(styleText);
+      that.push(file);
+
+      if (options.server.tmp) {
+        var tmp = path.resolve(options.server.tmp);
+        debug('remove tmp %s', tmp);
+        rimraf(tmp, callback);
+      } else {
+        callback();
+      }
     });
   });
 };
