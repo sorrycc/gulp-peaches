@@ -21,14 +21,17 @@
   },
   "homepage": "https://github.com/sorrycc/gulp-peaches",
   "dependencies": {
-    "peaches": "^0.5.18",
-    "event-stream": "^3.1.5",
-    "lodash": "^2.4.1",
-    "gulp-util": "^2.2.14"
+    "debug": "~0.8.1",
+    "gulp-util": "^2.2.14",
+    "lodash": "~2.4.1",
+    "peaches": "~0.5.18",
+    "rimraf": "~2.2.8",
+    "through2": "~0.4.2"
   },
   "devDependencies": {
-    "gulp": "^3.6.2",
-    "should": "^3.3.1",
-    "mocha": "^1.18.2"
+    "event-stream": "~3.1.5",
+    "gulp": "~3.6.2",
+    "mocha": "^1.18.2",
+    "should": "^3.3.1"
   }
 }
