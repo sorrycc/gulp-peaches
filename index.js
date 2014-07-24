@@ -18,7 +18,8 @@ module.exports = function gulpPeaches(options) {
       'name': 'tfs',
       'root': './tmp',
       'tmp': './tmp'
-    }
+    },
+    clean: false
   };
 
   options = _.extend(defaultOpt, options);
@@ -39,7 +40,7 @@ module.exports = function gulpPeaches(options) {
       file.contents = new Buffer(styleText);
       that.push(file);
 
-      if (options.server.tmp) {
+      if (options.server.tmp && options.clean) {
         var tmp = path.resolve(options.server.tmp);
         debug('remove tmp %s', tmp);
         rimraf(tmp, callback);

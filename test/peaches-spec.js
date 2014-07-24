@@ -13,8 +13,9 @@ describe('peaches', function() {
     stream
     .on('data', function(file) {
       var code = file.contents.toString();
+
       code.should.startWith('.ui-example, .ui-example-sub{background-image:url(');
-      code.should.endWith(');}.ui-example{background-position:0 -80px;width:55px;height:54px;}.ui-example-sub{background-position:0 0;width:180px;height:80px;}');
+      code.should.endWith(');}.ui-example{background-position:0 -82px;width:55px;height:54px;}.ui-example-sub{background-position:0 0;width:180px;height:80px;}');
       code.match(/http:\/\/gtms\d{2}.alicdn.com\/tps\/i\d\/[a-zA-Z0-9\-]+\.png/g)
         .length.should.eql(1);
     })

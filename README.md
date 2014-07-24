@@ -12,13 +12,19 @@ $ npm install gulp-peaches
 
 ```javascript
 var peaches = require('gulp-peaches');
+var options = {};
 
 gulp.task('peaches', function() {
   gulp.src('./src/*.css')
-    .pipe(peaches())
+    .pipe(peaches(options))
     .pipe(gulp.dest('./build/'))
 });
 ```
+
+## Options
+
+* `server`, server option, will pass through to peaches
+* `clean`, clean tmp folder after peaches is done, default false
 
 ## LISENCE
 
