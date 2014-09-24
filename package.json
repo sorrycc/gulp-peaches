@@ -22,7 +22,7 @@
   "homepage": "https://github.com/sorrycc/gulp-peaches",
   "dependencies": {
     "debug": "~0.8.1",
-    "gulp-util": "^2.2.14",
+    "gulp-util": "~3.0.1",
     "lodash": "~2.4.1",
     "peaches": "~0.5.18",
     "rimraf": "~2.2.8",
