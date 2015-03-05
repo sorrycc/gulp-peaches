@@ -19,7 +19,8 @@ module.exports = function gulpPeaches(options) {
       'root': './tmp',
       'tmp': './tmp'
     },
-    clean: false
+    clean: false,
+    ignore: []
   };
 
   options = _.extend(defaultOpt, options);
@@ -27,6 +28,10 @@ module.exports = function gulpPeaches(options) {
   return through.obj(function transform(file, enc, callback) {
     if (file.isNull()) return callback(null, file);
     if (file.isStream()) return callback(new PluginError(PLUGIN_NAME, 'Streaming not supported.'));
+
+    if (options.ignore.indexOf(file.path) > -1) {
+      return callback(null, file);
+    }
 
     var that = this;
     var code = file.contents.toString();

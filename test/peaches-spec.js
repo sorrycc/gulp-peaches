@@ -29,4 +29,26 @@ describe('peaches', function() {
     stream.write(fakeFile);
     stream.end();
   });
+
+  it('ignore', function(done) {
+    var stream = gulpPeaches({
+      ignore: [resolve('./test/fixtures/a.css')]
+    });
+    var buf = fs.readFileSync(resolve('./test/fixtures/a.css'));
+
+    stream
+    .on('data', function(file) {
+      var code = file.contents.toString();
+      code.should.eql(buf.toString());
+    })
+    .on('end', done);
+
+    var fakeFile = new File({
+      path: resolve('./test/fixtures/a.css'),
+      contents: buf
+    });
+
+    stream.write(fakeFile);
+    stream.end();
+  });
 });
